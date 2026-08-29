@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07070d">
+  <title>Gamer Cafe — Level 99</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="scene" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="topbar glass">
+      <div class="level">
+        <span>LEVEL</span><b>99</b>
+      </div>
+      <div class="xp-wrap">
+        <span>XP: <b>25680</b> / 30000</span>
+        <div class="xp-bar"><i></i></div>
+      </div>
+      <div class="motto">EAT <em>•</em> SLEEP <em>•</em> <b>GAME</b> <em>•</em> REPEAT</div>
+      <div class="rank">RANK: <b>LEGEND</b></div>
+    </header>
+
+    <aside class="panel system-panel glass">
+      <div class="panel-title">SYSTEM STATUS</div>
+      <div class="metric"><span>▣ GPU</span><b>78%</b></div><div class="meter"><i style="width:78%"></i></div>
+      <div class="metric"><span>◫ CPU</span><b>62%</b></div><div class="meter"><i style="width:62%"></i></div>
+      <div class="metric"><span>▤ RAM</span><b>74%</b></div><div class="meter"><i style="width:74%"></i></div>
+      <div class="metric"><span>⌁ INTERNET</span><b>92%</b></div><div class="meter"><i style="width:92%"></i></div>
+      <div class="metric"><span>◉ PING</span><b>28ms</b></div>
+      <div class="online">● STATUS: ONLINE</div>
+    </aside>
+
+    <aside class="panel player-panel glass">
+      <div class="panel-title">PLAYER STATS</div>
+      <div class="stat"><span>KILLS</span><b>12045</b></div>
+      <div class="stat"><span>WINS</span><b>892</b></div>
+      <div class="stat"><span>K/D RATIO</span><b>2.35</b></div>
+      <div class="stat"><span>MATCHES</span><b>2450</b></div>
+      <div class="stat"><span>SQUAD</span><b class="online-text">ONLINE</b></div>
+    </aside>
+
+    <section class="mission glass">
+      <div class="panel-title">TODAY'S MISSION</div>
+      <div>◉ PLAY</div><div>◉ IMPROVE</div><div>◉ WIN</div><div>◉ REPEAT</div>
+    </section>
+
+    <section class="quote glass">
+      <div class="panel-title">GAMER QUOTE</div>
+      <p id="quoteText">“It's not about being the best; it's about being better than you were yesterday.”</p>
+      <button id="nextQuote" class="mini-btn">NEXT QUOTE</button>
+    </section>
+
+    <div class="sound-hint glass">
+      <span class="music-note">♫</span>
+      <b>PRESS SPACEBAR</b>
+      <small>FOR EPIC SOUND</small>
+    </div>
+
+    <section class="player glass" aria-label="Music player">
+      <div class="track">
+        <div class="album-art">
+          <span>W</span>
+        </div>
+        <div class="track-copy">
+          <strong id="trackTitle">Warriyo - Mortals</strong>
+          <span id="trackArtist">feat. Laura Brehm</span>
+          <small>● PLAYING NOW &nbsp; · &nbsp; YouTube</small>
+        </div>
+      </div>
+
+      <div class="player-center">
+        <div class="controls">
+          <button id="shuffleBtn" title="Shuffle">⤨</button>
+          <button id="prevBtn" title="Previous">◀◀</button>
+          <button id="playBtn" class="play-btn" title="Play/Pause">▶</button>
+          <button id="nextBtn" title="Next">▶▶</button>
+          <button id="repeatBtn" title="Repeat">↻</button>
+        </div>
+        <div class="timeline">
+          <span id="currentTime">0:00</span>
+          <input id="progress" type="range" min="0" max="100" value="0" step="0.1">
+          <span id="duration">0:00</span>
+        </div>
+      </div>
+
+      <div class="volume">
+        <span>🔊</span>
+        <input id="volume" type="range" min="0" max="100" value="80">
+      </div>
+    </section>
+
+    <nav class="bottom-nav glass">
+      <button class="nav-btn active" data-section="HOME">⌂ <span>HOME</span></button>
+      <button class="nav-btn" data-section="MY GAMES">🎮 <span>MY GAMES</span></button>
+      <button class="nav-btn" data-section="ACHIEVEMENTS">♜ <span>ACHIEVEMENTS</span></button>
+      <button class="nav-btn" data-section="LEADERBOARD">▥ <span>LEADERBOARD</span></button>
+      <button class="nav-btn" data-section="SETTINGS">⚙ <span>SETTINGS</span></button>
+      <div class="clock"><b id="clock">00:00</b><small id="date">ONLINE</small></div>
+    </nav>
+
+    <div id="toast" class="toast glass" role="status"></div>
+  </div>
+
+  <!-- YouTube IFrame API. The player stays visually unobtrusive; your custom UI controls it. -->
+  <div id="youtube-player" aria-hidden="true"></div>
+  <script src="script.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
