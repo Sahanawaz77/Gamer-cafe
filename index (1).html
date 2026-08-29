@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07070d">
+<title>Gamer Cafe — Level 99</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard" id="dashboard">
+
+  <!-- Background artwork -->
+  <img class="bg" src="assets/gaming-dashboard.png" alt="Neon-lit gaming battlestation">
+  <div class="bg-scrim"></div>
+
+  <!-- ================= TOP HUD ================= -->
+  <header class="panel hud-top">
+    <div class="level-block">
+      <span class="tag-icon">⬡</span>
+      <span class="level-label">LEVEL</span>
+      <span class="level-value" id="levelValue">99</span>
+      <span class="xp-text"><span id="xpCurrent">25680</span> / <span id="xpMax">30000</span> XP</span>
+      <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
+    </div>
+
+    <nav class="loop-nav" aria-label="Daily loop">
+      <span>EAT</span><i>•</i><span>SLEEP</span><i>•</i><span class="active">GAME</span><i>•</i><span>REPEAT</span>
+    </nav>
+
+    <div class="rank-block">
+      <span class="rank-label">RANK</span>
+      <span class="rank-value">LEGEND</span>
+      <span class="rank-badge">🛡</span>
+    </div>
+  </header>
+
+  <!-- ================= LEFT: SYSTEM STATUS ================= -->
+  <aside class="panel system-status" aria-label="System status">
+    <h2>System Status</h2>
+    <ul class="stat-list" id="statList">
+      <li data-stat="gpu">
+        <span class="stat-icon">▣</span>
+        <span class="stat-name">GPU</span>
+        <span class="stat-value">78%</span>
+        <div class="stat-bar"><div class="stat-fill" style="width:78%"></div></div>
+        <span class="stat-sub">TEMPERATURE: <b>68°C</b></span>
+      </li>
+      <li data-stat="cpu">
+        <span class="stat-icon">◫</span>
+        <span class="stat-name">CPU</span>
+        <span class="stat-value">62%</span>
+        <div class="stat-bar"><div class="stat-fill" style="width:62%"></div></div>
+        <span class="stat-sub">TEMPERATURE: <b>54°C</b></span>
+      </li>
+      <li data-stat="ram">
+        <span class="stat-icon">▤</span>
+        <span class="stat-name">RAM</span>
+        <span class="stat-value">74%</span>
+        <div class="stat-bar"><div class="stat-fill" style="width:74%"></div></div>
+        <span class="stat-sub"><b>11.8</b> GB / 16 GB</span>
+      </li>
+      <li data-stat="net">
+        <span class="stat-icon">⌁</span>
+        <span class="stat-name">INTERNET</span>
+        <span class="stat-value">92%</span>
+        <div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div>
+        <span class="stat-sub"><b>1.0</b> Gbps</span>
+      </li>
+      <li data-stat="ping">
+        <span class="stat-icon">◉</span>
+        <span class="stat-name">PING</span>
+        <span class="stat-value" id="pingValue">28ms</span>
+        <span class="stat-sub">STABLE</span>
+      </li>
+    </ul>
+    <div class="status-online"><span class="dot"></span> STATUS: ONLINE</div>
+    <p class="sim-note">Live-styled demo values — edit freely in script.js</p>
+  </aside>
+
+  <!-- ================= RIGHT: PLAYER STATS ================= -->
+  <aside class="panel player-stats" aria-label="Player stats">
+    <h2>Player Stats</h2>
+    <ul>
+      <li><span class="stat-icon">☠</span> KILLS <b>12,045</b></li>
+      <li><span class="stat-icon">🏆</span> WINS <b>892</b></li>
+      <li><span class="stat-icon">⚔</span> K/D RATIO <b>2.35</b></li>
+      <li><span class="stat-icon">🎮</span> MATCHES <b>2,450</b></li>
+      <li><span class="stat-icon">👥</span> SQUAD <b class="online-text">ONLINE</b></li>
+    </ul>
+  </aside>
+
+  <!-- ================= MISSION PANEL ================= -->
+  <section class="panel mission" aria-label="Today's mission">
+    <h2>Today's Mission</h2>
+    <ul id="missionList">
+      <li><span class="chk">◉</span> Play</li>
+      <li><span class="chk">◉</span> Improve</li>
+      <li><span class="chk">◉</span> Win</li>
+      <li><span class="chk">◉</span> Repeat</li>
+    </ul>
+  </section>
+
+  <!-- ================= GAMER QUOTE ================= -->
+  <section class="panel quote" aria-label="Gamer quote">
+    <h2>Gamer Quote</h2>
+    <blockquote id="quoteText">"It's not about being the best; it's about being better than you were yesterday."</blockquote>
+    <button id="nextQuoteBtn" class="ghost-btn">NEXT QUOTE ⟳</button>
+  </section>
+
+  <!-- ================= SPACEBAR HINT ================= -->
+  <div class="panel spacebar-hint">
+    <span class="note-icon">♫</span>
+    <div>
+      <strong>PRESS SPACEBAR</strong>
+      <small>FOR EPIC SOUND</small>
+    </div>
+  </div>
+
+  <!-- ================= MUSIC PLAYER ================= -->
+  <section class="panel music-player glass" aria-label="Music player">
+    <div class="mp-art" id="mpArt">🎵</div>
+    <div class="mp-info">
+      <div class="mp-title" id="mpTitle">Track title</div>
+      <div class="mp-artist" id="mpArtist">Artist · <span class="playing-now">PLAYING NOW</span></div>
+      <div class="mp-progress-row">
+        <span class="mp-time" id="mpCurrentTime">0:00</span>
+        <input type="range" id="mpSeek" class="mp-seek" min="0" max="100" value="0" step="0.1">
+        <span class="mp-time" id="mpDuration">0:00</span>
+      </div>
+    </div>
+    <div class="mp-controls">
+      <button id="shuffleBtn" class="icon-btn" title="Shuffle">⤨</button>
+      <button id="prevBtn" class="icon-btn" title="Previous">◀◀</button>
+      <button id="playPauseBtn" class="icon-btn play-btn" title="Play/Pause">▶</button>
+      <button id="nextBtn" class="icon-btn" title="Next">▶▶</button>
+      <button id="repeatBtn" class="icon-btn" title="Repeat">↻</button>
+    </div>
+    <div class="mp-volume">
+      <button id="muteBtn" class="icon-btn" title="Mute">🔊</button>
+      <input type="range" id="mpVolume" class="mp-vol-slider" min="0" max="100" value="70">
+    </div>
+    <button id="mpClose" class="icon-btn mp-close" title="Hide player">✕</button>
+  </section>
+
+  <!-- Hidden YouTube player target -->
+  <div id="yt-player" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;"></div>
+
+  <!-- ================= BOTTOM NAV ================= -->
+  <nav class="panel bottom-nav" aria-label="Main navigation">
+    <button class="nav-item active" data-nav="home"><span>⌂</span>HOME</button>
+    <button class="nav-item" data-nav="games"><span>🎮</span>MY GAMES</button>
+    <button class="nav-item" data-nav="achievements"><span>♜</span>ACHIEVEMENTS</button>
+    <button class="nav-item" data-nav="leaderboard"><span>▥</span>LEADERBOARD</button>
+    <button class="nav-item" data-nav="settings"><span>⚙</span>SETTINGS</button>
+  </nav>
+
+  <!-- ================= CLOCK ================= -->
+  <div class="panel clock-box" aria-label="Clock">
+    <span id="clockTime">--:--</span>
+    <span id="clockDate">-- --- ----</span>
+    <span class="clock-icon">🕒</span>
+  </div>
+
+</div>
+
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="script.js"></script>
+</body>
+</html>
